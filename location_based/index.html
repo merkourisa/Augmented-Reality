@@ -4,29 +4,171 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>-->
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> 
+    <!--<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
     <script src='build/aframe-ar-nft.js'></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script> 
+    
 </head>
 
 
 <body style='margin: 0; overflow: hidden;'>
-    <a-scene
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+
+    <a-scene   
         vr-mode-ui="enabled: false"
 		embedded
 		arjs='sourceType: webcam; debugUIEnabled: false;'>
+     
+        <!--
+        <a-snow
+            snow="count:8000; dropRadius: .25; height: 50;  color: white;"
+            particle-system="preset: snow"
+            gps-entity-place="latitude: 44.506277; longitude: 11.301609">
+        </a-snow>  --> 
+        
+        <a-entity id="annyang" annyang-speech-recognition></a-entity>
 
+        <a-entity position="0 4.5 -20" particle-system="preset: snow"></a-entity>
+        <!--
+        <a-entity id="menu"
+            speech-command__show="command: play snow; type: attribute; attribute: visible; value: true;"
+            speech-command__hide="command: stop snow; type: attribute; attribute: visible; value: false;">
+        </a-entity> -->
+
+        <script>
+        if (annyang) {
+            console.log("Annyang working");
+
+            var commands = {
+                'Start Snow' : greetings, 
+                'Stop Snow' : introduction
+            }
+
+            //display snow
+            function greetings() {
+                console.log("rixnei xioni");
+            }
+
+            //stop displaying snow
+            function introduction() {
+                console.log("stamataei to xioni");
+            }
+
+            //add commands
+            annyang.addCommands(commands);
+
+            //annyang start listening
+            annyang.start();
+        }
+
+        
+        </script>
+    
         <a-box
-            material="color: red;"
+            material="color: magenta;"
             scale="20 20 20"
             gps-entity-place="latitude: 44.506477; longitude: 11.301524;">
         </a-box>
 
+        <a-cylinder
+            material="color: cyan;"
+            height="20"
+            radius="5"
+            gps-entity-place="latitude: 44.505786; longitude: 11.301609;">
+        </a-cylinder>
+
+        <a-sphere
+            material="color: yellow;"
+            radius="12"
+            gps-entity-place="latitude: 44.506277; longitude: 11.301124;">
+        </a-sphere>
+ 
         <a-camera
             rotation-reader
-            gps-camera="simulateLatitude: 44.504348; simulateLongitude: 11.301027; minDistance: 1; maxDistance: 700;"
-        >
-		</a-camera>
-	</a-scene>
+            gps-camera="simulateLatitude: 44.504348; simulateLongitude: 11.301027; minDistance: 1; maxDistance: 700;">
+        </a-camera>
+
+    </a-scene>
+
 </body>
 
+
+<!--
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-Frame Particle System Component Example</title>
+    <meta name="description" content="Hello, World!">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script> 
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script> 
+  </head>
+  <body>
+    <a-scene>
+       
+      <a-entity position="0 2.25 -15" particle-system="preset: snow"></a-entity>
+      <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>
+      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+ 
+      <a-sky color="#000000"></a-sky>
+    </a-scene>
+  </body>
+</html> 
+
+
+
+
+
+
+
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src='build/aframe-ar-nft.js'></script>
+
+
+
+
+<a-scene   
+        vr-mode-ui="enabled: false"
+		embedded
+		arjs='sourceType: webcam; debugUIEnabled: false;'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+See https://www.npmjs.com/package/aframe-speech-command-component for more info 
+
+<a-scene>
+
+    <a-entity id="annyang" annyang-speech-recognition></a-entity>
+  
+    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+  
+    <a-box position="-1 0.5 -3" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9" shadow visible="false" speech-command__show="command: show box; type: attribute; attribute: visible; value: true;" speech-command__hide="command: hide box; type: attribute; attribute: visible; value: false;"></a-box>
+  
+    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+  
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+  
+    <a-sky color="#ECECEC"></a-sky>
+  
+    <a-text position="-1 0.5 -2" align="center" value="Say show/hide box" color="black"></a-text>
+  
+    </a-entity>
+  
+</a-scene>
+
+-->
