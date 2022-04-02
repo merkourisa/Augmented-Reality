@@ -10,7 +10,8 @@
     
     <!-- speech command component -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
-    <script src="build/aframe-speech-command-component.js"></script> 
+    <!--<script src="build/aframe-speech-command-component.js"></script> -->
+
     
 
     <body style="margin : 0px; overflow: hidden;">
@@ -18,10 +19,60 @@
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+
+      
+      <a-entity position="0 4.5 -20" particle-system="preset: snow"></a-entity>
+      
+      <a-entity id="annyang" annyang-speech-recognition></a-entity>
+            <!--
+            <a-entity id="menu"
+                speech-command__show="command: play snow; type: attribute; attribute: visible; value: true;"
+                speech-command__hide="command: stop snow; type: attribute; attribute: visible; value: false;">
+            </a-entity> -->
+    
+            <script>
+            if (annyang) {
+                console.log("H fonitikh anagnorisi douleuei");
+    
+                var commands = {
+                    'Start Snow' : xionizei, 
+                    'Stop Snow' : denxionizei
+                }
+    
+                //display snow
+                function xionizei() {
+                    console.log("rixnei xioni");
+                }
+    
+                //stop displaying snow
+                function denxionizei() {
+                    console.log("stamataei to xioni");
+                    
+                }
+    
+                //add commands
+                annyang.addCommands(commands);
+    
+                //annyang start listening
+                annyang.start();
+            }
+    
+            
+            </script>
+    
+
+  
         <a-marker preset="hiro">
-            <a-entity id="box" geometry="primitive: box; width: 0.2; depth: 0.2; height: 0.2" position="0 0 0" material="color: #4CC3D9"></a-entity>
+
+            <a-entity id="box" geometry="primitive: box; " scale="0.2 0.2 0.2" position="0 0 0" material="color: magenta;"></a-entity>
+
+            <a-entity id="cylinder" geometry="primitive: cylinder; radius: 0.1; height: 0.3"  position="0.3 0 0" material="color: cyan;"></a-entity>
+
+            <a-entity id="sphere" geometry="primitive: sphere; radius: 0.14;"  position="-0.3 0 0" material="color: teal;"></a-entity>
+
+            
+
         </a-marker>
         <a-entity camera></a-entity>
         </a-scene>
