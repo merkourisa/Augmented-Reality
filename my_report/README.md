@@ -1,8 +1,8 @@
 # Lesson: Interaction Design
 
-### First and Last Name: xxx
-### University Registration Number: dpsdxxxxx
-### GitHub Personal Profile: xxx
+### First and Last Name: Mahy Plans García
+### University Registration Number: dpsd21902
+### GitHub Personal Profile: https://merkourisa.github.io/Augmented-Reality/
 ### Augmented Reality Personal Repository: xxx
 
 # Introduction
