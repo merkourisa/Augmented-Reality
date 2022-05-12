@@ -13,13 +13,7 @@
     <!--<script src="build/aframe-speech-command-component.js"></script> -->
 
 
-    <!--<script src="https://jeromeetienne.github.io/AR.js/three.js/build/ar.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>           -->
-
     <body style="margin : 0px; overflow: hidden;">
-
-
-        
 
 
         <a-scene
@@ -39,24 +33,27 @@
             </a-assets>
 
             <a-assets>
-                <a-asset-item id="car" src="./assets/scene.gltf"></a-asset-item>
+                <a-asset-item id="earth" src="./assets/earth.gltf"></a-asset-item>
             </a-assets>
             
 
             <a-marker id= "markerH" preset="custom2" type = 'pattern' url = './assets/pattern-card-H.patt'>
             <a-text value="Hydrogen" position="-0.5 0 -0.5" rotation="-90 0 0" color="black"></a-text>
-            <a-entity position="0 0 -1.8" scale="0.5 0.5 0.5" gltf-model="#pikachu" animation="property: rotation; dur: 12000; to: 0 360 0; loop: true"></a-entity>
+            <a-entity position="0 0 -1.8" scale="0.05 0.05 0.05" gltf-model="#pikachu" animation="property: rotation; dur: 12000; to: 0 360 0; loop: true"></a-entity>
             </a-marker>
 
             <a-marker id= "markerO" preset="custom3" type = 'pattern' url = './assets/pattern-card-O.patt'>
             <a-text value="Oxygen" positions="-0.5 0 -0.5" rotation="-90 0 0" color="black"></a-text>
-            <a-entity geometry="primitive: box; width:1; height:1; depth:1" position="0 0 -1.8" scale="0.1 0.1 0.1" gltf-model="#car" animation="property: rotation; radius: 0.0002; dur: 4000; to: 0 360 0; loop: true"></a-entity>
+            <a-entity geometry="primitive: box; width:1; height:1; depth:1" position="0 0 -1.8" scale="0.01 0.01 0.01" gltf-model="#earth" 
+            animation="property: rotation; dur: 4000; to: 0 360 0; loop: true"></a-entity>
             </a-marker>
       
 
             <a-entity position="0 4.5 -20" particle-system="preset: snow"></a-entity>
         
             <a-entity id="annyang" annyang-speech-recognition></a-entity>
+            
+            
                 <!--
                 <a-entity id="menu"
                     speech-command__show="command: play snow; type: attribute; attribute: visible; value: true;"
@@ -91,7 +88,7 @@
                 }         
                 </script>
     
-            <!----
+            
 
             <a-marker preset="hiro">
 
@@ -101,7 +98,7 @@
 
                 <a-entity id="sphere" geometry="primitive: sphere; radius: 0.14;"  position="-0.3 0 0" material="color: teal;"></a-entity>
 
-            </a-marker>                    -->
+            </a-marker>                  
 
         
             <a-entity camera></a-entity>           
